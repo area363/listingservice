@@ -6,6 +6,27 @@ import EssCard from './EssCard.jsx';
 import AmntCard from './AmntCard.jsx';
 import Modal from './Modal.jsx';
 
+const Main = styled.div`
+  overflow: hidden;
+  display: grid;
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255, 0.9);
+  grid-template-rows: 120px auto 50px;
+  grid-template-columns: 50px auto 50px;
+  grid-template-areas:
+    'num header close'
+    'previous carousel next'
+    '. description .';
+    display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const CardWrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
@@ -44,7 +65,7 @@ class InfoCards extends React.Component {
     var cardInfo = this.state.info;
     var name = this.state.name;
     if (show) {
-      return ( <Modal disp={show} cardInfo={cardInfo} name={name}handleClose={() => this.hideModal()}></Modal>);
+      return (<Main><Modal disp={show} cardInfo={cardInfo} name={name}handleClose={() => this.hideModal()}></Modal></Main>);
     } else {
       return (
         <CardWrapper>

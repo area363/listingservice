@@ -11,14 +11,14 @@ const CardDiv = styled.div`
   border: 1px solid #ebebeb;
   padding: 15px 5px 15px 15px;
   flex-wrap: wrap;
-  line-height: 1.4;
-  width: 220px;
+  line-height: 1.2;
+  width: 190px;
   height: 340px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.08) !important;
 `;
 
 const CardTitle = styled.div`
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 500;
   margin-bottom: 10px;
   margin-left: 4px;
@@ -41,11 +41,11 @@ const Icon = styled.div`
 `;
 
 const IconInfo = styled.span`
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 `;
 
 const CardText = styled.div`
-  font-size: 1.6rem;
+  font-size: 1rem;
   line-height: 2rem;
 `;
 
@@ -55,7 +55,7 @@ const MoreInfo = styled.div`
   left: 18px;
   color: #40d9ac;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 1rem;
   line-height: 1.4;
 `;
 
@@ -63,7 +63,7 @@ const MoreInfoText = styled.a`
   cursor: pointer;
   color: #40d9ac;
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 1rem;
 `;
 
 const EssCard = function(props) {

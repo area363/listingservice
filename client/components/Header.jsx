@@ -22,8 +22,8 @@ const ActionLeft = styled.div`
 const ActionRight = styled.div`
   font-weight: 500;
   display: flex;
-  margin-top: 20px;
   width: 50%;
+  right: -50;
 
 `;
 

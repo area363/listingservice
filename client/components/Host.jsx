@@ -43,14 +43,15 @@ const HostInfo = styled.div`
 
 const HostBy = styled.span`
   font-weight: 500 !important;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.2;
+  width: 80px;
 `;
 
 const HostName = styled.div`
   line-height: 1.2;
   font-weight: 400;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   color: inherit;
   background-color: transparent;
 `;

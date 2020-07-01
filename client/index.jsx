@@ -1,13 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import styled from 'styled-components';
+import React from "react";
+import ReactDOM from "react-dom";
+import $ from "jquery";
+import styled from "styled-components";
 
-import Header from './components/Header.jsx';
-import Desc from './components/Desc.jsx';
-import InfoCards from './components/InfoCards.jsx';
-import ContactHost from './components/ContactHost.jsx';
-import Host from './components/Host.jsx';
+import Header from "./components/Header.jsx";
+import Desc from "./components/Desc.jsx";
+import InfoCards from "./components/InfoCards.jsx";
+import ContactHost from "./components/ContactHost.jsx";
+import Host from "./components/Host.jsx";
+import "./index.css";
 
 const ListingDiv = styled.div`
   float: left;
@@ -19,16 +20,16 @@ const ListingDiv = styled.div`
   box-sizing: border-box;
   font-weight: 400;
   font-family: "Calibre", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 1.42;
   color: #333333;
   background-color: white;
 `;
 
 const HeaderDiv = styled.div`
-  padding-top: 25px;
-  padding-bottom: 25px;
-  font-size: 1.8rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 1rem;
 `;
 
 const Container = styled.section`
@@ -36,8 +37,8 @@ const Container = styled.section`
   padding-top: 20px;
   border-top: 1px solid #ebebeb;
   border-bottom: 1px solid #ebebeb;
+  font-size: 1rem;
 `;
-
 
 const Overview = styled.div`
   margin-left: -10px;
@@ -46,6 +47,7 @@ const Overview = styled.div`
   grid-template-columns: 33% 67%;
   padding: 10px;
   grid-row: 2 / 1;
+  font-size: 1rem;
 `;
 
 const Cards = styled.div`
@@ -58,24 +60,21 @@ class ListingApp extends React.Component {
   constructor() {
     super();
     this.state = {
-      site: '',
-      mounted: false
+      site: "",
+      mounted: false,
     };
   }
 
   componentDidMount() {
     var state = this;
     var id = window.location.pathname;
-
-    if (id === '/') {
-      // do nothing
-    } else {
-      $.get('http://localhost:3002/site' + id)
-        .then(function(res) {
-          state.setState({site: res});
-          state.setState({mounted: true});
-        }
-        );
+    if (id === "/") {
+      console.log("Welcome!");
+    } else if (state.state.site.id !== id) {
+      $.get("http://localhost:3002/site" + id).then(function (res) {
+        state.setState({ site: res });
+        state.setState({ mounted: true });
+      });
     }
   }
 
@@ -83,21 +82,23 @@ class ListingApp extends React.Component {
     var state = this;
     if (state.state.mounted) {
       return (
-        <ListingDiv>
-          <HeaderDiv>
-            <Header info={state.state.site.site}/>
-          </HeaderDiv>
-          <Container>
-            <Overview>
-              <Host info={state.state.site}/>
-              <Desc info={state.state.site}/>
-            </Overview>
-            <Cards>
-              <InfoCards info={state.state.site}/>
-            </Cards>
-            <ContactHost info={state.state.site}/>
-          </Container>
-        </ListingDiv>
+        <div id="container">
+          <ListingDiv>
+            <HeaderDiv>
+              <Header info={state.state.site.site} />
+            </HeaderDiv>
+            <Container>
+              <Overview>
+                <Host info={state.state.site} />
+                <Desc info={state.state.site} />
+              </Overview>
+              <Cards>
+                <InfoCards info={state.state.site} />
+              </Cards>
+              <ContactHost info={state.state.site} />
+            </Container>
+          </ListingDiv>
+        </div>
       );
     } else {
       return null;
@@ -105,4 +106,4 @@ class ListingApp extends React.Component {
   }
 }
 
-ReactDOM.render(<ListingApp />, document.getElementById('listing'));
+ReactDOM.render(<ListingApp />, document.getElementById("listing"));

@@ -9,7 +9,7 @@ import {faUser} from '@fortawesome/free-regular-svg-icons';
 import {faCampground, faFaucet, faShower, faUtensils, faWifi, faTrashAlt, faBed, faFire, faToiletPaper, faDog, faMapMarkerAlt, faParking, faWheelchair} from '@fortawesome/free-solid-svg-icons';
 
 const ModalDiv = styled.div`
-  width: 430px;
+  width: 350px;
   position: relative;
   margin-top: 30px;
   margin-right: auto;
@@ -73,10 +73,11 @@ const ModalBody = styled.div`
 `;
 
 const ModalItem = styled.div`
-  width: 100%;
+  width: 90%;
   background-color: #fff;
   border: 1px solid #ebebeb;
   margin-bottom: 20px;
+  padding: 7px 0px 7px 20px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.08) !important;
 `;
 
@@ -130,33 +131,31 @@ const Modal = ({ handleClose, disp, cardInfo, name }) => {
   var arr = Object.keys(cardInfo);
 
   return (
-    ReactDOM.createPortal(
-      <div className={showHideClassName}>
-        <ModalDiv>
-          <ModalBox>
-            <ModalHeader>
-              <ModalButton onClick={handleClose}>
-                <XButton>X</XButton>
-              </ModalButton>
-              <HeaderTitle>{name}</HeaderTitle>
-            </ModalHeader>
-            <ModalBody>
-              {arr.map((item) => (
-                <ModalItem key={arr.indexOf(item)}>
-                  <VertIcon>
-                    <Icon>
-                      <IconInfo>
-                        <FontAwesomeIcon icon={img[item]}/>
-                      </IconInfo>
-                    </Icon>
-                  </VertIcon>
-                  <CardText> {cardInfo[item]}</CardText>
-                </ModalItem>))}
-            </ModalBody>
-          </ModalBox>
-        </ModalDiv>
-      </div>,
-      document.body)
+    <div className={showHideClassName}>
+      <ModalDiv>
+        <ModalBox>
+          <ModalHeader>
+            <ModalButton onClick={handleClose}>
+              <XButton>X</XButton>
+            </ModalButton>
+            <HeaderTitle>{name}</HeaderTitle>
+          </ModalHeader>
+          <ModalBody>
+            {arr.map((item) => (
+              <ModalItem key={arr.indexOf(item)}>
+                <VertIcon>
+                  <Icon>
+                    <IconInfo>
+                      <FontAwesomeIcon icon={img[item]}/>
+                    </IconInfo>
+                  </Icon>
+                </VertIcon>
+                <CardText> {cardInfo[item]}</CardText>
+              </ModalItem>))}
+          </ModalBody>
+        </ModalBox>
+      </ModalDiv>
+    </div>
   );
 };
 
