@@ -71,7 +71,7 @@ class ListingApp extends React.Component {
     if (id === "/") {
       console.log("Welcome!");
     } else if (state.state.site.id !== id) {
-      $.get("http://localhost:3002/site" + id).then(function (res) {
+      $.get("http://52.79.61.49:3002/site" + id).then(function (res) {
         state.setState({ site: res });
         state.setState({ mounted: true });
       });
